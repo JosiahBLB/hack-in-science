@@ -2,25 +2,35 @@ import csv
 import datetime
 
 meteo = [
-    (('temperature', 42),
-     ('date', datetime.date(2017, 1, 22)),
-     ('locations', ('Berlin', 'Paris')),
-     ('weather', 'sunny')),
-    (('temperature', -42),
-     ('date', datetime.date(2017, 1, 22)),
-     ('locations', ('Marseille', 'Moscow')),  
-     ('weather', 'cloudy'))]
+    (
+        ("temperature", 42),
+        ("date", datetime.date(2017, 1, 22)),
+        ("locations", ("Berlin", "Paris")),
+        ("weather", "sunny"),
+    ),
+    (
+        ("temperature", -42),
+        ("date", datetime.date(2017, 1, 22)),
+        ("locations", ("Marseille", "Moscow")),
+        ("weather", "cloudy"),
+    ),
+]
+
 
 def generate_csv(a_list):
-    with open('results.csv', 'w', newline='') as csvfile:
-
+    with open("results.csv", "w", newline="") as csvfile:
         fieldnames = [[column[0] for column in block] for block in a_list]
         fieldnames = fieldnames[0] + fieldnames[1]
         fieldnames = list(dict.fromkeys(fieldnames))
 
-        csv_out = csv.DictWriter(csvfile, delimiter=',', quoting=csv.QUOTE_MINIMAL,
-                        quotechar='"', fieldnames=fieldnames)
-        
+        csv_out = csv.DictWriter(
+            csvfile,
+            delimiter=",",
+            quoting=csv.QUOTE_MINIMAL,
+            quotechar='"',
+            fieldnames=fieldnames,
+        )
+
         parsed_data = [dict(block) for block in a_list]
 
         # for key, value in a_list[0].items():
@@ -45,5 +55,6 @@ def generate_csv(a_list):
         #             row[index] = str(row[index]).strip("'()").strip("'")
         #     csv_out.writerow(row)
     return
+
 
 generate_csv(meteo)

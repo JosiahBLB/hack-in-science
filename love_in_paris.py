@@ -4,5 +4,6 @@ def love_meet(bob, alice):
     visited = bob.intersection(alice)
     return set(visited)
 
+
 if __name__ == "__main__":
     love_meet()
