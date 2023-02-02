@@ -1,4 +1,9 @@
-I ="""
+"""
+Find the 4 adjacent numbers that create the largest product in the grid including diagonally.
+
+"""
+
+I = """
 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
 81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65
@@ -21,26 +26,26 @@ I ="""
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 """.split("\n")
 
-I = [r.split(" ") for r in I][1:21]  # Convert row into list item of numbers, and remove blank rows
-I = [[int(n) for n in r] for r in I]  # Convert elements inside of rows into int type
+I = [r.split(" ") for r in I][1:21]  # Convert row into list item of numbers, and remove blank rows.
+I = [[int(n) for n in r] for r in I]  # Convert elements inside of rows into int type.
 
 greatest_prod = 0
 for j in range(20):
-    for i in range (20):
-        try:
-            prod_rdiag = I[i][j] * I[i+1][j+1] * I[i+2][j+2] * I[i+3][j+3]
+    for i in range(20):
+        try:  # Check diagonally right of the start index
+            prod_rdiag = I[i][j] * I[i + 1][j + 1] * I[i + 2][j + 2] * I[i + 3][j + 3]
         except:
             pass
-        try:
-            prod_ldiag = I[i+3][j] * I[i+2][j+1] * I[i+1][j+2] * I[i][j+3]
+        try:  # Check diagonally left of the start index
+            prod_ldiag = I[i + 3][j] * I[i + 2][j + 1] * I[i + 1][j + 2] * I[i][j + 3]
         except:
             pass
-        try:
-            prod_hoz = I[i][j] * I[i+1][j] * I[i+2][j] * I[i+3][j]
+        try:  # Check right of the start index
+            prod_hoz = I[i][j] * I[i + 1][j] * I[i + 2][j] * I[i + 3][j]
         except:
             pass
-        try:
-            prod_vert = I[i][j+1] * I[i][j+1] * I[i][j+2] * I[i][j+3]
+        try:  # Check down of the start index
+            prod_vert = I[i][j + 1] * I[i][j + 1] * I[i][j + 2] * I[i][j + 3]
         except:
             pass
         prod = max([prod_rdiag, prod_ldiag, prod_hoz, prod_vert])
@@ -49,6 +54,7 @@ for j in range(20):
 
 print(greatest_prod)
 
+# Solution
 print(f"\t\t\t{I[12][6]}")
 print(f"\t\t{I[13][5]}")
 print(f"\t{I[14][4]}")

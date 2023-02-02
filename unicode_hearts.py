@@ -1,8 +1,14 @@
+"""
+Print all of the unicode characters that have 'heart' in their name.
+
+"""
+
+
 import unicodedata as ucd
 
 if __name__ == "__main__":
-    for i in range(50,230000):
+    for i in range(50, 230000):
         num = str(chr(i))
-        name = ucd.name(num,'')
+        name = ucd.name(num, "")
         if "heart" in name.lower():
-            print(ucd.lookup(name), end='')
+            print(ucd.lookup(name), end="")

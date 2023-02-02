@@ -1,13 +1,19 @@
-def draw_n_squares(n):
+"""
+Draw a grid of size (n x n).
 
-    odd = "".join(["+", n*"---+"])
-    even = "".join(["|", n*"   |"])
+"""
+
+def draw_n_squares(n):
+    odd = "".join(["+", n * "---+"])
+    even = "".join(["|", n * "   |"])
     squares = []
-    for i in range(n*2+1):
-        if i%2:
+    for i in range(n * 2 + 1):
+        if i % 2:
             squares.append(even)
         else:
             squares.append(odd)
     return "\n".join(squares)
 
-print(draw_n_squares(3))
+
+if __name__ == "__main__":
+    print(draw_n_squares(3))
