@@ -2,7 +2,9 @@
 The four adjacent digits in the 1000-digit number that have the greatest product are 9 × 9 × 8 × 9 = 5832.
 Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
 """
+
 from functools import reduce
+
 
 _1000_digit_number = """
 73167176531330624919225119674426574742355349194934
@@ -44,7 +46,6 @@ def largest_product(string: str, largest_product=0):
         except:
             pass
     return print(largest_product)
-
 
 if __name__ == "__main__":
     largest_product(_1000_digit_number)
